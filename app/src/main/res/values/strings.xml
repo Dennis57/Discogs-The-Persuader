@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">The Persuader</string>
+    <string name="discogs">Discogs</string>
+    <string name="artist_name">Artist Name</string>
+    <string name="main_logo">Main Logo</string>
+    <string name="real_name">Real Name</string>
+    <string name="releases">Releases</string>
 </resources>
