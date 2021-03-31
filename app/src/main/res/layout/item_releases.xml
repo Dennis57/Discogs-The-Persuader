@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/card_griditem"
@@ -20,34 +19,35 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginStart="10dp"
-            tools:src="@drawable/discogs"
+            android:contentDescription="@string/release_logo"
+            android:src="@drawable/discogs"
+            card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintLeft_toLeftOf="parent"
-            card_view:layout_constraintTop_toTopOf="parent"
-            card_view:layout_constraintBottom_toBottomOf="parent"/>
+            card_view:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_release_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Alan Walker - Faded"
-            tools:fontFamily="sans-serif"
-            tools:textColor="@color/black"
-            card_view:layout_constraintTop_toTopOf="parent"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="@color/black"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintLeft_toRightOf="@+id/iv_release_image"
-            card_view:layout_constraintRight_toLeftOf="@+id/tv_release_year"/>
+            card_view:layout_constraintRight_toLeftOf="@+id/tv_release_year"
+            card_view:layout_constraintTop_toTopOf="parent"
+            tools:text="Alan Walker - Faded" />
 
         <TextView
             android:id="@+id/tv_release_year"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
-            tools:text="2021"
-            tools:fontFamily="sans-serif"
-            tools:textColor="@color/black"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="@color/black"
+            card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintRight_toRightOf="parent"
             card_view:layout_constraintTop_toTopOf="parent"
-            card_view:layout_constraintBottom_toBottomOf="parent"/>
+            tools:text="2021" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".Main.MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -15,23 +15,23 @@
             android:id="@+id/iv_discogs"
             android:layout_width="150dp"
             android:layout_height="100dp"
+            android:contentDescription="@string/main_logo"
             android:src="@drawable/discogs_white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/main_logo" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_artist_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-medium"
-            android:text="@string/artist_name"
             android:textColor="@color/white"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_discogs" />
+            app:layout_constraintTop_toBottomOf="@+id/iv_discogs"
+            tools:text="@string/artist_name" />
 
         <TextView
             android:id="@+id/tv_real_name"
@@ -49,16 +49,15 @@
             android:id="@+id/tv_aliases"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif"
             android:layout_marginTop="8dp"
+            android:fontFamily="sans-serif"
             android:text="Aliases"
+            android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_real_name" />
-
-
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_main_bottom"

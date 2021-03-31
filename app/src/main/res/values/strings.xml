@@ -5,4 +5,5 @@
     <string name="main_logo">Main Logo</string>
     <string name="real_name">Real Name</string>
     <string name="releases">Releases</string>
+    <string name="release_logo">Release logo</string>
 </resources>
