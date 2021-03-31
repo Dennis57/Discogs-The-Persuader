@@ -1,12 +1,11 @@
 package com.example.thepersuader
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.thepersuader.Model.ReleaseUiModel
+import com.example.thepersuader.Model.Release.ReleaseUiModel
 import com.example.thepersuader.databinding.ItemReleasesBinding
 
 class ReleaseAdapter(val onClickListener: (id: Int) -> Unit) : ListAdapter<ReleaseUiModel, ReleaseAdapter.ReleaseViewHolder>(DiffCallback){

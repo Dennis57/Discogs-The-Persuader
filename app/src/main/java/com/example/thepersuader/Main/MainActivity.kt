@@ -1,13 +1,12 @@
 package com.example.thepersuader.Main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.thepersuader.R
+import androidx.recyclerview.widget.RecyclerView
 import com.example.thepersuader.ReleaseAdapter
 import com.example.thepersuader.databinding.ActivityMainBinding
 
@@ -48,5 +47,16 @@ class MainActivity : AppCompatActivity() {
                 adapter.submitList(it)
             }
         })
+
+        binding.rvReleases.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+                if (!recyclerView.canScrollVertically(1)) {
+                    Toast.makeText(this@MainActivity, "Last", Toast.LENGTH_SHORT).show()
+                    viewModel.getReleases()
+                }
+            }
+        })
+
     }
 }

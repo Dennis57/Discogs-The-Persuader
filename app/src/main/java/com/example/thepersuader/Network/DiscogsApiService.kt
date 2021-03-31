@@ -1,7 +1,7 @@
 package com.example.thepersuader.Network
 
-import com.example.thepersuader.Model.ArtistResponse
-import com.example.thepersuader.Model.ReleaseResponse
+import com.example.thepersuader.Model.Artist.ArtistResponse
+import com.example.thepersuader.Model.Release.ReleaseResponse
 import com.google.gson.GsonBuilder
 import io.reactivex.Observable
 import retrofit2.Response

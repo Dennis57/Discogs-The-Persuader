@@ -1,4 +1,4 @@
-package com.example.thepersuader.Model
+package com.example.thepersuader.Model.Artist
 
 data class ArtistUiModel(
     val name: String,
