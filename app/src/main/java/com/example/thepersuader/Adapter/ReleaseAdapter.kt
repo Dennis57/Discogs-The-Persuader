@@ -1,4 +1,4 @@
-package com.example.thepersuader
+package com.example.thepersuader.Adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,7 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.thepersuader.Model.Release.ReleaseUiModel
 import com.example.thepersuader.databinding.ItemReleasesBinding
 
-class ReleaseAdapter(val onClickListener: (id: Int) -> Unit) : ListAdapter<ReleaseUiModel, ReleaseAdapter.ReleaseViewHolder>(DiffCallback){
+class ReleaseAdapter(val onClickListener: (id: Int) -> Unit) : ListAdapter<ReleaseUiModel, ReleaseAdapter.ReleaseViewHolder>(
+    DiffCallback
+){
 
     inner class ReleaseViewHolder(private var binding: ItemReleasesBinding):
         RecyclerView.ViewHolder(binding.root) {
@@ -23,7 +25,7 @@ class ReleaseAdapter(val onClickListener: (id: Int) -> Unit) : ListAdapter<Relea
 
     companion object DiffCallback : DiffUtil.ItemCallback<ReleaseUiModel>() {
         override fun areItemsTheSame(oldItem: ReleaseUiModel, newItem: ReleaseUiModel): Boolean {
-            return oldItem === newItem
+            return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(oldItem: ReleaseUiModel, newItem: ReleaseUiModel): Boolean {

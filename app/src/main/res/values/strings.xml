@@ -6,4 +6,6 @@
     <string name="real_name">Real Name</string>
     <string name="releases">Releases</string>
     <string name="release_logo">Release logo</string>
+    <string name="tracklist">Tracklist</string>
+    <string name="videos">Videos</string>
 </resources>

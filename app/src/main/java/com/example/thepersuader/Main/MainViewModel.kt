@@ -71,11 +71,9 @@ class MainViewModel : ViewModel() {
                         it.body()?.let { releaseResponse ->
                             for(response in releaseResponse.releases) {
                                 val releaseUiModel = ReleaseUiModel(response.id ?: 0, response.name.orEmpty(), response.year ?: 0)
-                                Log.e("<Error>", releaseUiModel.name)
                                 releaseUiModels.add(releaseUiModel)
                             }
                             _releases.value = releaseUiModels
-                            Log.e("<Error>", "Test fetch release success. " + _releases.value)
                             page += 1
                         }
                     }

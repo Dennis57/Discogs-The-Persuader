@@ -10,10 +10,10 @@ data class ArtistResponse(
     val real_name: String?,
 
     @SerializedName("aliases")
-    val aliases: List<Aliases>?
+    val aliases: List<AliasResponse>?
 )
 
-data class Aliases(
+data class AliasResponse(
     @SerializedName("name")
     val name: String
 )

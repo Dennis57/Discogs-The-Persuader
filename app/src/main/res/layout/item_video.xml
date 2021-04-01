@@ -17,12 +17,14 @@
 
         <TextView
             android:id="@+id/tv_video_title"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-medium"
             android:textColor="@color/black"
+            android:layout_marginEnd="20dp"
+            card_view:layout_constraintEnd_toStartOf="@id/ib_video"
             card_view:layout_constraintBottom_toBottomOf="parent"
-            card_view:layout_constraintLeft_toLeftOf="parent"
+            card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toTopOf="parent"
             tools:text="Fades" />
 

@@ -26,10 +26,13 @@
 
         <TextView
             android:id="@+id/tv_release_name"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-medium"
+            android:textAlignment="center"
             android:textColor="@color/black"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintLeft_toRightOf="@+id/iv_release_image"
             card_view:layout_constraintRight_toLeftOf="@+id/tv_release_year"
