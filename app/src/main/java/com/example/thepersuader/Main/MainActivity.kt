@@ -1,7 +1,10 @@
 package com.example.thepersuader.Main
 
 import android.content.Intent
+import android.opengl.Visibility
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -39,15 +42,41 @@ class MainActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
         viewModel.artist.observe(this, Observer {
-            if(null != it) {
+            if (null != it) {
                 binding.tvArtistName.text = it.name
                 binding.tvRealName.text = it.real_name
                 binding.tvAliases.text = it.aliases
             }
         })
 
+        viewModel.showLoading.observe(this, Observer {
+            Log.e("<Error>", it.toString())
+            if (it == true) {
+                binding.tvArtistName.visibility = View.INVISIBLE
+                binding.tvRealName.visibility = View.INVISIBLE
+                binding.tvAliases.visibility = View.INVISIBLE
+                binding.prArtistName.visibility = View.VISIBLE
+            } else {
+                binding.tvArtistName.visibility = View.VISIBLE
+                binding.tvRealName.visibility = View.VISIBLE
+                binding.tvAliases.visibility = View.VISIBLE
+                binding.prArtistName.visibility = View.GONE
+            }
+        })
+
+        viewModel.artistError.observe(this, Observer {
+            if (it == true) {
+                binding.ivError.visibility = View.VISIBLE
+                binding.tvArtistName.visibility = View.INVISIBLE
+                binding.tvRealName.visibility = View.INVISIBLE
+                binding.tvAliases.visibility = View.INVISIBLE
+            } else {
+                binding.ivError.visibility = View.GONE
+            }
+        })
+
         viewModel.releases.observe(this, Observer {
-            if(null != it) {
+            if (null != it) {
                 adapter.submitList(it.toMutableList())
             }
         })

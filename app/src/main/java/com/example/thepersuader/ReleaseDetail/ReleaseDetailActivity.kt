@@ -1,6 +1,7 @@
 package com.example.thepersuader.ReleaseDetail
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -38,14 +39,36 @@ class ReleaseDetailActivity : AppCompatActivity() {
         viewModel.getReleaseDetails(intent.extras?.getInt("id"))
 
         viewModel.releaseDetails.observe(this, Observer {
-            if(null != it) {
-
+            if (null != it) {
                 binding.tvTitle.text = it.title
                 binding.tvReleaseYear.text = it.year.toString()
                 binding.tvArtistName.text = it.artists
 
                 tracklistAdapter.submitList(it.trackList.toMutableList())
                 videoAdapter.submitList(it.videos.toMutableList())
+            }
+        })
+
+        viewModel.showLoading.observe(this, Observer {
+            if (it == true) {
+                binding.tvTitle.visibility = View.INVISIBLE
+                binding.tvReleaseYear.visibility = View.INVISIBLE
+                binding.tvArtistName.visibility = View.INVISIBLE
+                binding.prTitle.visibility = View.VISIBLE
+            } else {
+                binding.tvTitle.visibility = View.VISIBLE
+                binding.tvReleaseYear.visibility = View.VISIBLE
+                binding.tvArtistName.visibility = View.VISIBLE
+                binding.prTitle.visibility = View.GONE
+            }
+        })
+
+        viewModel.releaseDetailError.observe(this, Observer {
+            if (it == true) {
+                binding.ivError.visibility = View.VISIBLE
+                binding.tvTitle.visibility = View.INVISIBLE
+                binding.tvReleaseYear.visibility = View.INVISIBLE
+                binding.tvArtistName.visibility = View.INVISIBLE
             }
         })
 

@@ -21,6 +21,25 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <ProgressBar
+            android:id="@+id/pr_artist_name"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:indeterminateDrawable="@drawable/progress"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_discogs" />
+
+        <ImageView
+            android:id="@+id/iv_error"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/error_white"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_discogs" />
+
         <TextView
             android:id="@+id/tv_artist_name"
             android:layout_width="wrap_content"
@@ -28,6 +47,7 @@
             android:fontFamily="sans-serif-medium"
             android:textColor="@color/white"
             android:textSize="24sp"
+            android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/iv_discogs"
@@ -41,6 +61,7 @@
             android:text="@string/real_name"
             android:textColor="@color/white"
             android:textSize="20sp"
+            android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_artist_name" />
@@ -55,6 +76,7 @@
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="18sp"
+            android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_real_name" />
@@ -63,12 +85,12 @@
             android:id="@+id/cl_main_bottom"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="180dp"
             android:background="@drawable/white_rounded_bottom"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_aliases">
+            app:layout_constraintTop_toBottomOf="@id/iv_discogs">
 
             <TextView
                 android:id="@+id/tv_releases"

@@ -11,12 +11,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ThePersuader">
-        <activity android:name=".ReleaseDetail.ReleaseDetailActivity"></activity>
-        <activity android:name=".Main.MainActivity">
+        <activity
+            android:name=".ReleaseDetail.ReleaseDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Main.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data android:scheme="http" />
                 <data android:scheme="https" />
                 <data android:host="api.discogs.com" />
