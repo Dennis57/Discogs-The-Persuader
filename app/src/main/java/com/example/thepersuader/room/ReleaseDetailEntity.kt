@@ -21,13 +21,12 @@ data class ReleaseDetailEntity(
     val artists: String
 )
 
-
 @Entity(tableName = "track_list_table")
 data class TrackListEntity(
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "track_id")
-    val trackId: Int,
+    val trackId: Int = 0,
 
     @ColumnInfo(name = "release_detail_id")
     val releaseDetailId: Int,
@@ -42,9 +41,9 @@ data class TrackListEntity(
 @Entity(tableName = "video_table")
 data class VideoEntity(
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "video_id")
-    val videoId: Int,
+    val videoId: Int = 0,
 
     @ColumnInfo(name = "release_detail_id")
     val releaseDetailId: Int,

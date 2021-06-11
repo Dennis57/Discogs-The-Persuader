@@ -58,7 +58,6 @@ class MainActivity : AppCompatActivity() {
         })
 
         viewModel.showLoading.observe(this, Observer {
-            Log.e("<Error>", "Loading artist is " + it.toString())
             if (it == true) {
                 binding.tvArtistName.visibility = View.INVISIBLE
                 binding.tvRealName.visibility = View.INVISIBLE
@@ -96,6 +95,9 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
+
+        viewModel.getArtist()
+        viewModel.getReleases()
 
     }
 }

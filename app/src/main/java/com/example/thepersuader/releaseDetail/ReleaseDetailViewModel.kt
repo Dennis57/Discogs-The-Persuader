@@ -11,80 +11,42 @@ import com.example.thepersuader.model.releaseDetail.ReleaseDetailUiModel
 import com.example.thepersuader.model.releaseDetail.TrackListUiModel
 import com.example.thepersuader.model.releaseDetail.VideosUiModel
 import com.example.thepersuader.network.DiscogsApiService
-//import com.example.thepersuader.network.DiscogsApi
+import com.example.thepersuader.repository.ReleaseDetailRepository //import com.example.thepersuader.network.DiscogsApi
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class ReleaseDetailViewModel @Inject constructor(private val discogsApplication: DiscogsApplication, private val retrofitService: DiscogsApiService) : ViewModel() {
+class ReleaseDetailViewModel @Inject constructor(private val releaseDetailRepository: ReleaseDetailRepository) :
+  ViewModel() {
 
-    private var _releaseDetails = MutableLiveData<ReleaseDetailUiModel>()
+  private var _releaseDetails = MutableLiveData<ReleaseDetailUiModel>()
 
-    val releaseDetails: LiveData<ReleaseDetailUiModel>
-        get() = _releaseDetails
+  val releaseDetails: LiveData<ReleaseDetailUiModel>
+    get() = _releaseDetails
 
-    private var _showLoading = MutableLiveData<Boolean>()
+  private var _showLoading = MutableLiveData<Boolean>()
 
-    val showLoading: LiveData<Boolean>
-        get() = _showLoading
+  val showLoading: LiveData<Boolean>
+    get() = _showLoading
 
-    private var _releaseDetailError = MutableLiveData<Boolean>()
+  private var _releaseDetailError = MutableLiveData<Boolean>()
 
-    val releaseDetailError: LiveData<Boolean>
-        get() = _releaseDetailError
+  val releaseDetailError: LiveData<Boolean>
+    get() = _releaseDetailError
 
-    @SuppressLint("CheckResult")
-    fun getReleaseDetails(id: Int?) {
-        try {
-            retrofitService.getReleaseDetail(id)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .doOnSubscribe { _showLoading.value = true }
-                .doOnTerminate { _showLoading.value = false }
-                .subscribe({
-                    if (it.isSuccessful) {
-                        it.body()?.let { releaseDetailResponse ->
-
-                            val trackUiModels = releaseDetailResponse.trackList?.map { trackResponse ->
-                                TrackListUiModel(
-                                    trackResponse.title.orEmpty(),
-                                    trackResponse.duration ?: "-"
-                                )
-                            }
-
-                            val videoUiModels = mutableListOf<VideosUiModel>()
-                            releaseDetailResponse.videos?.forEach { videoResponse ->
-                                videoUiModels.add(
-                                    VideosUiModel(
-                                        videoResponse.title.orEmpty(),
-                                        videoResponse.uri.orEmpty()
-                                    )
-                                )
-                            }
-
-//                            val artists2: List<String?> = releaseDetailResponse.artists?.map { artist -> artist.name }.orEmpty()
-                            val artists: String =
-                                releaseDetailResponse.artists?.map { artist -> artist.name }
-                                    ?.joinToString(", ") ?: "Unspecificed"
-
-                            val releaseDetailUiModel = ReleaseDetailUiModel(
-                                releaseDetailResponse.id ?: 0,
-                                releaseDetailResponse.title.orEmpty(),
-                                releaseDetailResponse.year ?: 0,
-                                artists,
-                                trackUiModels.orEmpty(),
-                                videoUiModels
-                            )
-                            _releaseDetails.value = releaseDetailUiModel
-                        }
-                    }
-                }, {
-                    Log.e("<Error>", "Error: " + it.message)
-                    _releaseDetailError.value = true
-                })
-        } catch (e: Exception) {
-            Log.e("<Error>", "Error: " + e.message)
-            _releaseDetailError.value = true
+  @SuppressLint("CheckResult") fun getReleaseDetails(id: Int) {
+    releaseDetailRepository.getReleaseDetail(id).subscribeOn(Schedulers.io())
+      .observeOn(AndroidSchedulers.mainThread()).doOnSubscribe { _showLoading.value = true }
+      .doOnTerminate { _showLoading.value = false }.subscribe({
+        if (it != null) {
+          _releaseDetails.value = it
+        } else {
+          _releaseDetailError.value = true
         }
-    }
+        _showLoading.value = false
+      }, {
+        _releaseDetailError.value = true
+        _showLoading.value = false
+      })
+  }
 }

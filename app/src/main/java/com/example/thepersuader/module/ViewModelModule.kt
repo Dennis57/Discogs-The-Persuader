@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.thepersuader.main.MainViewModel
 import com.example.thepersuader.ViewModelFactory
 import com.example.thepersuader.ViewModelKey
+import com.example.thepersuader.releaseDetail.ReleaseDetailViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -19,4 +20,9 @@ internal abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(MainViewModel::class)
     protected abstract fun mainViewModel(mainViewModel: MainViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(ReleaseDetailViewModel::class)
+    protected abstract fun releaseDetailViewModel(releaseDetailViewModel: ReleaseDetailViewModel): ViewModel
 }
