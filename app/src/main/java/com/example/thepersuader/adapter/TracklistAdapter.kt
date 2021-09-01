@@ -22,7 +22,7 @@ class TracklistAdapter: ListAdapter<TrackListUiModel, TracklistAdapter.Tracklist
 
     companion object DiffCallback : DiffUtil.ItemCallback<TrackListUiModel>() {
         override fun areItemsTheSame(oldItem: TrackListUiModel, newItem: TrackListUiModel): Boolean {
-            return oldItem.title == oldItem.title
+            return oldItem.title == newItem.title
         }
 
         override fun areContentsTheSame(oldItem: TrackListUiModel, newItem: TrackListUiModel): Boolean {

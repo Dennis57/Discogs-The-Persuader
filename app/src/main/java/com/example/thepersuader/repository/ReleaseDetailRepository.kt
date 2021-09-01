@@ -14,9 +14,9 @@ import javax.inject.Inject
 
 class ReleaseDetailRepository @Inject constructor(
   private val discogsDatabaseDao: DiscogsDatabaseDao, private val retrofitService: DiscogsApiService
-) {
+) : ReleaseDetailRepositoryInterface {
 
-  fun getReleaseDetail(id: Int): Observable<ReleaseDetailUiModel> {
+  override fun getReleaseDetail(id: Int): Observable<ReleaseDetailUiModel> {
     return retrofitService.getReleaseDetail(id).onErrorReturnItem(
       Response.success(null)
     )

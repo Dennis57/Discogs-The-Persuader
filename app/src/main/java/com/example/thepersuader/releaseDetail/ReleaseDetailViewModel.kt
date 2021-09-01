@@ -12,11 +12,12 @@ import com.example.thepersuader.model.releaseDetail.TrackListUiModel
 import com.example.thepersuader.model.releaseDetail.VideosUiModel
 import com.example.thepersuader.network.DiscogsApiService
 import com.example.thepersuader.repository.ReleaseDetailRepository //import com.example.thepersuader.network.DiscogsApi
+import com.example.thepersuader.repository.ReleaseDetailRepositoryInterface
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class ReleaseDetailViewModel @Inject constructor(private val releaseDetailRepository: ReleaseDetailRepository) :
+class ReleaseDetailViewModel @Inject constructor(private val releaseDetailRepository: ReleaseDetailRepositoryInterface) :
   ViewModel() {
 
   private var _releaseDetails = MutableLiveData<ReleaseDetailUiModel>()

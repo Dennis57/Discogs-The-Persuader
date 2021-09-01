@@ -1,7 +1,7 @@
 package com.example.thepersuader.component
 
 import android.app.Application
-import com.example.thepersuader.DiscogsApplication
+import com.example.thepersuader.DiscogsTestApplication
 import com.example.thepersuader.module.*
 import com.example.thepersuader.module.ViewModelModule
 import dagger.BindsInstance
@@ -11,24 +11,22 @@ import javax.inject.Singleton
 
 @Component(
   modules = [
-    ApiModule::class,
-    DbModule::class,
     ViewModelModule::class,
     ActivityModule::class,
     AndroidSupportInjectionModule::class,
-    RepositoryModule::class,
-    ContextModule::class]
+    FakeRepositoryModule::class,
+    FakeContextModule::class]
 )
 @Singleton
-interface AppComponent {
+interface AppTestComponent {
 
   @Component.Builder
   interface Builder {
     @BindsInstance
     fun application(application: Application): Builder
 
-    fun build(): AppComponent
+    fun build(): AppTestComponent
   }
 
-  fun inject(discogsApplication: DiscogsApplication)
+  fun inject(discogsTestApplication: DiscogsTestApplication)
 }

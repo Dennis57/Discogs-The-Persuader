@@ -1,24 +1,21 @@
 package com.example.thepersuader.main
 
 import android.annotation.SuppressLint
-import android.util.Log
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.thepersuader.DiscogsApplication
 import com.example.thepersuader.model.artist.ArtistUiModel
 import com.example.thepersuader.model.release.ReleaseUiModel
-import com.example.thepersuader.network.DiscogsApiService
 import com.example.thepersuader.repository.ArtistRepository
+import com.example.thepersuader.repository.ArtistRepositoryInterface
 import com.example.thepersuader.repository.ReleaseRepository
-import com.example.thepersuader.room.DiscogsDatabase
+import com.example.thepersuader.repository.ReleaseRepositoryInterface
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 class MainViewModel @Inject constructor(
-  private val artistRepository: ArtistRepository, private val releaseRepository: ReleaseRepository
+  private val artistRepository: ArtistRepositoryInterface, private val releaseRepository: ReleaseRepositoryInterface
 ) : ViewModel() {
 
   private var _releases = MutableLiveData<List<ReleaseUiModel>>()
@@ -41,7 +38,8 @@ class MainViewModel @Inject constructor(
   val artistError: LiveData<Boolean>
     get() = _artistError
 
-  @SuppressLint("CheckResult") fun getArtist() {
+  @SuppressLint("CheckResult")
+  fun getArtist() {
     artistRepository.getArtist(1).subscribeOn(Schedulers.io())
       .observeOn(AndroidSchedulers.mainThread()).doOnSubscribe {
         _showLoading.value = true

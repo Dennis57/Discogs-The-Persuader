@@ -10,13 +10,13 @@ import javax.inject.Inject
 
 class ReleaseRepository @Inject constructor(
   private val discogsDatabaseDao: DiscogsDatabaseDao, private val retrofitService: DiscogsApiService
-) {
+) : ReleaseRepositoryInterface {
 
   private var page = 1
 
   var releaseEntities: MutableList<ReleaseEntity> = mutableListOf()
 
-  fun getReleases(artistId: Int): Observable<List<ReleaseUiModel>> {
+  override fun getReleases(artistId: Int): Observable<List<ReleaseUiModel>> {
 
     return retrofitService.getReleases(page, 20).onErrorReturnItem(
       Response.success(null)

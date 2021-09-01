@@ -1,8 +1,5 @@
 package com.example.thepersuader.repository
 
-import android.util.Log
-import com.example.thepersuader.model.artist.AliasResponse
-import com.example.thepersuader.model.artist.ArtistResponse
 import com.example.thepersuader.model.artist.ArtistUiModel
 import com.example.thepersuader.network.DiscogsApiService
 import com.example.thepersuader.room.ArtistEntity
@@ -13,9 +10,9 @@ import javax.inject.Inject
 
 class ArtistRepository @Inject constructor(
   private val discogsDatabaseDao: DiscogsDatabaseDao, private val retrofitService: DiscogsApiService
-) {
+) : ArtistRepositoryInterface {
 
-  fun getArtist(artistId: Int): Observable<ArtistUiModel> {
+  override fun getArtist(artistId: Int): Observable<ArtistUiModel> {
 
     return retrofitService.getArtist()
       .onErrorReturnItem(

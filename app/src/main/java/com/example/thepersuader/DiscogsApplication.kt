@@ -1,6 +1,5 @@
 package com.example.thepersuader
 
-import android.app.Activity
 import android.app.Application
 import android.content.Context
 import com.example.thepersuader.component.DaggerAppComponent

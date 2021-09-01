@@ -20,6 +20,7 @@ class ReleaseAdapter(val onClickListener: (id: Int) -> Unit) : ListAdapter<Relea
             binding.root.setOnClickListener {
                 onClickListener(release.id)
             }
+
         }
     }
 
