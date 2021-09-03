@@ -2,24 +2,18 @@ package com.example.thepersuader.releaseDetail
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.thepersuader.R
 import com.example.thepersuader.ViewModelFactory
 import com.example.thepersuader.adapter.TracklistAdapter
 import com.example.thepersuader.databinding.FragmentTrackListBinding
-import dagger.android.AndroidInjection
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
-import kotlin.properties.Delegates
 
 class TrackListFragment : Fragment() {
 
