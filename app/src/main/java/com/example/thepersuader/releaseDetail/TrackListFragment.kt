@@ -19,7 +19,7 @@ import com.example.thepersuader.databinding.FragmentTrackListBinding
 import dagger.android.AndroidInjection
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
-
+import kotlin.properties.Delegates
 
 class TrackListFragment : Fragment() {
 
@@ -49,6 +49,8 @@ class TrackListFragment : Fragment() {
         val tracklistAdapter = TracklistAdapter()
 
         binding.rvTracklist.adapter = tracklistAdapter
+
+        viewModel.getReleaseDetails(1)
 
         viewModel.releaseDetails.observe(viewLifecycleOwner, Observer {
             if (null != it) {

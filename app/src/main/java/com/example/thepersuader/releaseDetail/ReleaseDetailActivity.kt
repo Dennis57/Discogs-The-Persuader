@@ -64,9 +64,6 @@ class ReleaseDetailActivity : AppCompatActivity() {
                 binding.tvTitle.text = it.title
                 binding.tvReleaseYear.text = it.year.toString()
                 binding.tvArtistName.text = it.artists
-
-//                tracklistAdapter.submitList(it.trackList.toMutableList())
-//                videoAdapter.submitList(it.videos.toMutableList())
             }
         })
 
