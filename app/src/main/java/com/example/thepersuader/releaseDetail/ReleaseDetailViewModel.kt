@@ -1,17 +1,10 @@
 package com.example.thepersuader.releaseDetail
 
 import android.annotation.SuppressLint
-import android.util.Log
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.thepersuader.DiscogsApplication
 import com.example.thepersuader.model.releaseDetail.ReleaseDetailUiModel
-import com.example.thepersuader.model.releaseDetail.TrackListUiModel
-import com.example.thepersuader.model.releaseDetail.VideosUiModel
-import com.example.thepersuader.network.DiscogsApiService
-import com.example.thepersuader.repository.ReleaseDetailRepository //import com.example.thepersuader.network.DiscogsApi
 import com.example.thepersuader.repository.ReleaseDetailRepositoryInterface
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers

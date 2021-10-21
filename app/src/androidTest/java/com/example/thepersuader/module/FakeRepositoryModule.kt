@@ -1,8 +1,6 @@
 package com.example.thepersuader.module
 
-import com.example.thepersuader.network.DiscogsApiService
 import com.example.thepersuader.repository.*
-import com.example.thepersuader.room.DiscogsDatabaseDao
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
