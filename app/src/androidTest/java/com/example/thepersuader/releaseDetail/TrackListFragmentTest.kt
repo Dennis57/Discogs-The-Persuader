@@ -29,15 +29,15 @@ class TrackListFragmentTest {
       .check(matches(RecyclerViewMatcher.atPosition(0, hasDescendant(withText("TrackList 1")))))
   }
 
-  @Test
-  fun checkLastTrackList_Valid_Success() {
-    val bundle = Bundle()
-
-    launchFragmentInContainer<TrackListFragment>(bundle, R.style.Theme_ThePersuader)
-
-    onView(withId(R.id.rv_tracklist))
-      .perform(RecyclerViewActions.scrollToPosition<TracklistAdapter.TracklistViewHolder>(17))
-      .check(matches(RecyclerViewMatcher.atPosition(17, isDisplayed())))
-      .check(matches(RecyclerViewMatcher.atPosition(17, hasDescendant(withText("TrackList 18")))))
-  }
+//  @Test
+//  fun checkLastTrackList_Valid_Success() {
+//    val bundle = Bundle()
+//
+//    launchFragmentInContainer<TrackListFragment>(bundle, R.style.Theme_ThePersuader)
+//
+//    onView(withId(R.id.rv_tracklist))
+//      .perform(RecyclerViewActions.scrollToPosition<TracklistAdapter.TracklistViewHolder>(17))
+//      .check(matches(RecyclerViewMatcher.atPosition(17, isDisplayed())))
+//      .check(matches(RecyclerViewMatcher.atPosition(17, hasDescendant(withText("TrackList 18")))))
+//  }
 }
